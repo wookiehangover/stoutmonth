@@ -21,7 +21,7 @@ body { color: #616161; }
 
 .topbar h1 { color:#616161; float: left; font-size: 32px; margin: 0 12px 0 12px; line-height: 40px; }
 .topbar h1 a { text-decoration: none; }
-.topbar input { margin: 2px 0 0;  }
+.topbar input { margin: 2px 0 0; }
 .topbar-inner { overflow: hidden; }
 .topbar .nav { height: 40px; }
 
@@ -38,15 +38,27 @@ body { color: #616161; }
 .stout-list .rating { float:left; clear: both;}
 .stout-list .details { float:right; }
 .stout-list .counter { position: absolute; top:0; right:0; min-width: 24px; height: 20px; text-align: center; font-size: 12px; line-height: 20px; color: #fff; background: #616161;
-
   -webkit-border-radius: 16px; 
      -moz-border-radius: 16px; 
           border-radius: 16px; 
 
-  
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-
 }
+
+.stout-list .counter.d_1  { background: #113F8C; }
+.stout-list .counter.d_2  { background: #01A4A4; }
+.stout-list .counter.d_3  { background: #00A1CB; }
+.stout-list .counter.d_4  { background: #61AE24; }
+.stout-list .counter.d_6  { background: #D0D102; }
+.stout-list .counter.d_7  { background: #32742C; }
+.stout-list .counter.d_8  { background: #D70060; }
+.stout-list .counter.d_9  { background: #E54028; }
+.stout-list .counter.d_10 { background: #F18D05; }
+
+#fb-login { width: 300px; margin: 0 auto;}
+#fb-login .fb { font-size: 24px; width: 278px; text-align: center; }
+#fb-login h3 { font-size: 16px; width: 300px; text-align: center; }
+#fb-login .drink { font-size: 60px; width: 274;text-align: center; }
 
 /* #Page Styles
 ================================================== */
@@ -58,6 +70,8 @@ body { color: #616161; }
   /* Smaller than standard 960 (devices and browsers) */
   @media only screen and (max-width: 959px) {}
 
+
+
   /* Tablet Portrait size to standard 960 (devices and browsers) */
   @media only screen and (min-width: 768px) and (max-width: 959px) {
     .stout-list dl,
@@ -66,13 +80,15 @@ body { color: #616161; }
 
   /* All Mobile Sizes (devices and browser) */
   @media only screen and (max-width: 767px) {
-    .stout-list dl,
-    .stout-list h2 { width: 206px;}
+
   }
 
   /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
   @media only screen and (min-width: 480px) and (max-width: 767px) {
+    .stout-list dl,
+    .stout-list h2 { width: 206px;}
 
+    .topbar form { width: 160px; }
   }
 
   /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
@@ -82,6 +98,10 @@ body { color: #616161; }
     .stout-list h2 { width: 214px;}
   }
 
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+     .stout-list dl,
+    .stout-list h2 { width: 190px; }
+  }
 
 /* #Font-Face
 ================================================== */
