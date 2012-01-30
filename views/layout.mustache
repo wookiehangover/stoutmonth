@@ -36,7 +36,16 @@
 
     <header class="topbar">
       <div class="topbar-inner">
-        <h1><a href="/">Stout Month</a></h1>
+        {{#everyauth}}
+          <h1>
+          {{#loggedIn}}
+            <a href="/stouts">Stout Month</a>
+          {{/loggedIn}}
+          {{^loggedIn}}
+            <a href="/">Stout Month</a>
+          {{/loggedIn}}
+          </h1>
+        {{/everyauth}}
 
         <form class="pull-left" action="">
           <input type="text" placeholder="Search">
@@ -44,11 +53,11 @@
 
         <ul class="nav secondary-nav">
           {{#everyauth}}
-          {{#loggedIn}}
-          <li>
-            <a href="/logout">Logout</a>
-          </li>
-          {{/loggedIn}}
+            {{#loggedIn}}
+            <li>
+              <a href="/logout">Logout</a>
+            </li>
+            {{/loggedIn}}
           {{/everyauth}}
 
           <li class="dropdown">

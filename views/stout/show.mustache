@@ -1,0 +1,33 @@
+{{#stout}}
+<article class="stout-detail columns twelve">
+  <header>
+    <h2>{{name}}</h2>
+    <p class="rating">★★★★☆</p>
+    <span class="counter">0</span>
+    {{#everyauth}}
+    {{#loggedIn}}
+    <a href="/stout/{{slug}}/update">Edit</a>
+    {{/loggedIn}}
+    {{/everyauth}}
+  </header>
+  <dl>
+    <dt>ABV:
+    <dd>{{abv}}
+    <dt>OG:
+    <dd>{{og}}
+  </dl>
+  <div class="details">
+    <p>{{description}}</p>
+
+    {{#malt}}
+    <h3>Malt:</h3>
+    <p>{{malt}}</p>
+    {{/malt}}
+
+    {{#hops}}
+    <h3>Hops:</h3>
+    <p>{{hops}}</p>
+    {{/hops}}
+  </div>
+</article>
+{{/stout}}

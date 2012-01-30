@@ -1,10 +1,10 @@
 <div id="fb-login">
   {{#everyauth}}
 
-  {{^facebook}}
+  {{^loggedIn}}
   <a href="/auth/facebook" class="button fb">Sign in with Facebook</a>
   <h3>&mdash;or&mdash;</h3>
-  {{/facebook}}
+  {{/loggedIn}}
 
   {{/everyauth}}
 

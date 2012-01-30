@@ -1,54 +1,19 @@
-<ul class="stout-list six columns">
+<ul class="stout-list twelve columns">
+  {{#stouts}}
   <li>
     <button>Drink</button>
-    <h2>FunkyTown Stout</h2>
-    <dl>
-      <dt>ABV:
-      <dd>8.0%
-      <dt>OG:
-      <dd>1.074
-    </dl>
+    <header>
+      <h2>{{name}}</h2>
+      <dl>
+        <dt>ABV:
+        <dd>{{abv}}
+        <dt>OG:
+        <dd>{{og}}
+      </dl>
+    </header>
     <p class="rating">★★★★☆</p>
-    <a href="#" class="details">Details</a>
-    <span class="counter">1</span>
+    <a href="/stout/{{slug}}" class="details">Details</a>
+    <span class="counter">0</span>
   </li>
-  <li>
-    <button>Drink</button>
-    <h2>FunkyTown Stout Really Long Name</h2>
-    <dl>
-      <dt>ABV:
-      <dd>8.0%
-      <dt>OG:
-      <dd>1.074
-    </dl>
-    <p class="rating">★★★★☆</p>
-    <a href="#" class="details">Details</a>
-    <span class="counter d_8">8</span>
-  </li>
-  <li>
-    <button>Drink</button>
-    <h2>FunkyTown Stout</h2>
-    <dl>
-      <dt>ABV:
-      <dd>8.0%
-      <dt>OG:
-      <dd>1.074
-    </dl>
-    <p class="rating">★★★★☆</p>
-    <a href="#" class="details">Details</a>
-    <span class="counter">1</span>
-  </li>
-    <li>
-    <button>Drink</button>
-    <h2>FunkyTown Stout</h2>
-    <dl>
-      <dt>ABV:
-      <dd>8.0%
-      <dt>OG:
-      <dd>1.074
-    </dl>
-    <p class="rating">★★★★☆</p>
-    <a href="#" class="details">Details</a>
-    <span class="counter">1</span>
-  </li>
+  {{/stouts}}
 </ul>

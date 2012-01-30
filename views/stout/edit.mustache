@@ -1,0 +1,36 @@
+{{#stout}}
+<form action="/stout/{{slug}}/update" method="post" accept-charset="UTF-8" class="columns twelve">
+
+  <div class="form-row">
+    <label for="stout[name]">Name</label>
+    <input type="text" name="stout[name]" value="{{name}}" id="stout[name]">
+  </div>
+
+  <div class="form-row">
+    <label for="stout[abv]">ABV</label>
+    <input type="text" name="stout[abv]" value="{{abv}}" id="stout[abv]">
+  </div>
+
+  <div class="form-row">
+    <label for="stout[og]">OG</label><input type="text" name="stout[og]" value="{{og}}" id="stout[og]">
+  </div>
+
+  <div class="form-row">
+    <label for="stout[description]">Description</label>
+    <textarea name="stout[description]" rows="8" cols="40">{{description}}</textarea>
+  </div>
+
+  <div class="form-row">
+    <label for="stout[malt]">Malt</label>
+    <textarea name="stout[malt]" rows="8" cols="40">{{malt}}</textarea>
+  </div>
+
+  <div class="form-row">
+    <label for="stout[hops]">Hops</label>
+    <textarea name="stout[hops]" rows="8" cols="40">{{hops}}</textarea>
+  </div>
+
+  <input type="submit" name="submit" value="Save">
+
+</form>
+{{/stout}}

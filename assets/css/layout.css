@@ -19,6 +19,11 @@
 
 body { color: #616161; }
 
+
+.form-row { float:left; width: 100%; }
+.form-row textarea,
+.form-row input[type=text] { width: 100%; }
+
 .topbar h1 { color:#616161; float: left; font-size: 32px; margin: 0 12px 0 12px; line-height: 40px; }
 .topbar h1 a { text-decoration: none; }
 .topbar input { margin: 2px 0 0; }
@@ -27,17 +32,23 @@ body { color: #616161; }
 
 .container { margin-top: 60px; }
 
+.stout-detail header { float: left; width: 100%; position: relative;}
+.stout-detail dl { float: left; width: 100%; margin: 0 0 12px 0; }
+.stout-detail dl dt { float: left; padding-right: 4px; }
+.stout-detail dl dd { float: left; padding-right: 8px; font-weight: bold; }
+
 
 .stout-list {  }
 .stout-list li { float:left; position: relative; width: 100%; }
+.stout-list header { float: left; }
 .stout-list h2 { float:left; margin: 0; width: 260px; padding: 0 0 4px; font-size: 24px; line-height: 1; }
 .stout-list button { float: left; margin: 4px 12px 0 0; }
-.stout-list dl { float: left; width: 260px; margin: 0 0 12px 0; }
+.stout-list dl { float: left; clear: both; margin: 0 0 12px 0; }
 .stout-list dl dt { float: left; padding-right: 4px; }
 .stout-list dl dd { float: left; padding-right: 8px; font-weight: bold; }
 .stout-list .rating { float:left; clear: both;}
 .stout-list .details { float:right; }
-.stout-list .counter { position: absolute; top:0; right:0; min-width: 24px; height: 20px; text-align: center; font-size: 12px; line-height: 20px; color: #fff; background: #616161;
+.container .counter { position: absolute; top:0; right:0; min-width: 24px; height: 20px; text-align: center; font-size: 12px; line-height: 20px; color: #fff; background: #000;
   -webkit-border-radius: 16px; 
      -moz-border-radius: 16px; 
           border-radius: 16px; 
@@ -45,15 +56,15 @@ body { color: #616161; }
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
 }
 
-.stout-list .counter.d_1  { background: #113F8C; }
-.stout-list .counter.d_2  { background: #01A4A4; }
-.stout-list .counter.d_3  { background: #00A1CB; }
-.stout-list .counter.d_4  { background: #61AE24; }
-.stout-list .counter.d_6  { background: #D0D102; }
-.stout-list .counter.d_7  { background: #32742C; }
-.stout-list .counter.d_8  { background: #D70060; }
-.stout-list .counter.d_9  { background: #E54028; }
-.stout-list .counter.d_10 { background: #F18D05; }
+.counter.d_1  { background: #113F8C; }
+.counter.d_2  { background: #01A4A4; }
+.counter.d_3  { background: #00A1CB; }
+.counter.d_4  { background: #61AE24; }
+.counter.d_6  { background: #D0D102; }
+.counter.d_7  { background: #32742C; }
+.counter.d_8  { background: #D70060; }
+.counter.d_9  { background: #E54028; }
+.counter.d_10 { background: #F18D05; }
 
 #fb-login { width: 300px; margin: 0 auto;}
 #fb-login .fb { font-size: 24px; width: 278px; text-align: center; }
