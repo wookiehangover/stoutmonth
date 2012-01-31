@@ -1,7 +1,7 @@
-<ul class="stout-list twelve columns">
+<ul id="stout-list" class="stout-list sixteen columns">
   {{#stouts}}
-  <li>
-    <button>Drink</button>
+  <li id="{{slug}}">
+    <a href="#" class="button" data-slug="{{slug}}">Drink</a>
     <header>
       <h2>{{name}}</h2>
       <dl>
@@ -13,6 +13,7 @@
     </header>
     <p class="rating">★★★★☆</p>
     <a href="/stout/{{slug}}" class="details">Details</a>
+    <p class="description">{{description}}</p>
     <span class="counter">0</span>
   </li>
   {{/stouts}}

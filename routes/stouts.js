@@ -1,5 +1,4 @@
 var
-  _      = require('underscore'),
   routes = {},
   models = require('../lib/models'),
   Stout  = models.stout;
@@ -11,7 +10,9 @@ routes.index = function( req, res ){
     if( err ) throw err;
 
     return res.render('stout/index', {
-      stouts: docs
+      stouts: docs,
+      search: true,
+      js_module: 'stouts'
     });
   });
 };
@@ -50,17 +51,17 @@ routes.edit = function( req, res ){
   });
 };
 
-routes.update = function( req, res ){
+routes.update = function( req, res, next ){
   var
     conditions = { 'slug': req.params.slug },
     update     = req.body.stout;
 
-  Stout.update( conditions, update, {}, function( err, doc, next ){
+  Stout.update( conditions, update, {}, function( err, doc ){
     if( err ){
       return next(new Error('Could not load Document'));
     }
 
-    res.redirect('/stout/' + req.params.slug );
+    res.redirect('/stout/' + req.body.stout.slug );
   });
 
 };

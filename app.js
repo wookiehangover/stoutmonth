@@ -44,19 +44,33 @@ mongooseAuth.helpExpress( app );
 
 // Routes
 
-app.get('/', routes.index );
+app.get( '/', routes.index );
+
+app.get( '/admin', express.basicAuth( 'admin', 'ch@nge,me' ), routes.admin );
+
+// User
 
 app.get('/logout', routes.logout );
 
+app.get( '/me', routes.user.index );
+
+app.get( '/api/user', routes.user.api.index );
+
+app.put( '/api/user', routes.user.api.update );
+
+// Drinks
+
+app.get( '/api/drinks', routes.drinks.api.index );
+
+app.post('/api/drinks', routes.drinks.api.create );
+
+app.put( '/api/drinks/:id', routes.drinks.api.update );
+
+app.get( '/api/drinks/total', routes.drinks.api.total );
+
+// Stouts
+
 app.get( '/stouts', routes.stouts.index );
-
-app.get( '/stout/:slug', routes.stouts.show );
-
-app.get( '/api/stouts', routes.stouts.api.index );
-
-app.get( '/api/stout/:slug', routes.stouts.api.show );
-
-app.get( '/admin', express.basicAuth( 'admin', 'ch@nge,me' ), routes.admin );
 
 app.get( '/stout/new', express.basicAuth( 'admin', 'ch@nge,me' ), routes.stouts['new'] );
 
@@ -65,6 +79,22 @@ app.post( '/stout/new', express.basicAuth( 'admin', 'ch@nge,me' ), routes.stouts
 app.get( '/stout/:slug/update', express.basicAuth( 'admin', 'ch@nge,me' ), routes.stouts.edit );
 
 app.post( '/stout/:slug/update', express.basicAuth( 'admin', 'ch@nge,me' ), routes.stouts.update );
+
+app.get( '/stout/:slug', routes.stouts.show );
+
+app.get( '/api/stouts', routes.stouts.api.index );
+
+app.get( '/api/stout/:slug', routes.stouts.api.show );
+
+// General
+
+app.get( '*', function( req, res ){
+  res.render('404');
+});
+
+app.error(function(err, req, res, next){
+  res.render('404');
+});
 
 // App Init
 

@@ -1,9 +1,14 @@
 {{#stout}}
-<form action="/stout/{{slug}}/update" method="post" accept-charset="UTF-8" class="columns twelve">
+<form action="/stout/{{slug}}/update" method="post" accept-charset="UTF-8" class="columns sixteen">
 
   <div class="form-row">
     <label for="stout[name]">Name</label>
     <input type="text" name="stout[name]" value="{{name}}" id="stout[name]">
+  </div>
+
+  <div class="form-row">
+    <label for="stout[slug]">Name</label>
+    <input type="text" name="stout[slug]" value="{{slug}}" id="stout[slug]">
   </div>
 
   <div class="form-row">
