@@ -1,7 +1,8 @@
 var
   routes = {},
   models = require('../lib/models'),
-  Stout  = models.stout;
+  Stout  = models.stout,
+  Drink  = models.drink;
 
 /* ------------------------------ Resources ------------------------------ */
 
@@ -12,18 +13,44 @@ routes.index = function( req, res ){
     return res.render('stout/index', {
       stouts: docs,
       search: true,
-      js_module: 'stouts'
+      js_module: 'stouts',
+      loggedIn: req.loggedIn
     });
   });
 };
 
 routes.show = function( req, res ){
-  Stout.find({ 'slug': req.params.slug }, function( err, doc ){
+
+  Stout.findOne( { slug: req.params.slug }, function( err, doc ){
     if( err ) throw err;
 
-    res.render( 'stout/show', {
-      stout: doc
-    });
+    var conditions = { beer: req.params.slug };
+
+    if( ! req.user ){
+
+      res.render( 'stout/show', {
+        stout: doc,
+        js_module: 'stout_detail',
+        loggedIn: req.loggedIn
+      });
+
+    } else {
+
+      conditions.user = req.user.get('login');
+
+      Drink.findOne( conditions, function( error, drink ){
+        if( error ) throw error;
+
+        res.render( 'stout/show', {
+          stout: doc,
+          js_module: 'stout_detail',
+          loggedIn: req.loggedIn,
+          can_rate: drink ? !! drink.count : false
+        });
+
+      });
+    }
+
   });
 };
 
@@ -44,7 +71,7 @@ routes.create = function( req, res ){
 };
 
 routes.edit = function( req, res ){
-  Stout.find({ 'slug': req.params.slug }, function( err, doc ){
+  Stout.find({ slug: req.params.slug }, function( err, doc ){
     if( err ) throw err;
 
     res.render( 'stout/edit', { stout: doc } );
@@ -53,7 +80,7 @@ routes.edit = function( req, res ){
 
 routes.update = function( req, res, next ){
   var
-    conditions = { 'slug': req.params.slug },
+    conditions = { slug: req.params.slug },
     update     = req.body.stout;
 
   Stout.update( conditions, update, {}, function( err, doc ){
@@ -77,18 +104,65 @@ routes.api = {};
 
 routes.api.index = function( req, res ){
   Stout.find({}, [], { sort: { 'name': 1 } }, function( err, docs ){
-    if( err ) throw err;
+    if( err ){
+      return res.send({ error: "Not found" }, 404);
+    }
 
     return res.send( docs );
   });
 };
 
 routes.api.show = function( req, res ){
-  Stout.find({ "slug": req.params.slug }, function( err, doc ){
-    if( err ) throw err;
+  Stout.findOne({ slug: req.params.slug }, function( err, doc ){
+    if( err ){
+      return res.send({ error: "Not found" }, 404);
+    }
 
     res.send( doc );
   });
+};
+
+/* ------------------------------ RPC ------------------------------ */
+
+// POST /stout/:slug/rate
+routes.rate = function( req, res , next ){
+
+  if( !req.user ){
+    return res.send({ error: "Forbidden" }, 403);
+  }
+
+  Stout.findOne({ slug: req.params.slug }, function( error, beer ){
+
+    if( error ){
+      return res.send({ error: "Not found" }, 404);
+    }
+
+    Drink.findOne({ user: req.user.get('login') }, function( err, d ){
+
+      if( error ){
+        return res.send({ error: "Not found" }, 404);
+      }
+
+      if( d.rated ){
+        return res.send("You've already rated this beer", 412);
+      }
+
+      beer.raw_rating = req.body.rating;
+      beer.ratings = 1;
+
+      beer.save(function( err, doc){
+
+        d.rated = true;
+        d.save();
+
+        res.send( doc, 202 );
+
+      });
+
+    });
+
+  });
+
 };
 
 module.exports = routes;

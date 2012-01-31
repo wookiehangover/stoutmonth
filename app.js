@@ -80,6 +80,8 @@ app.get( '/stout/:slug/update', express.basicAuth( 'admin', 'ch@nge,me' ), route
 
 app.post( '/stout/:slug/update', express.basicAuth( 'admin', 'ch@nge,me' ), routes.stouts.update );
 
+app.post( '/stout/:slug/rate', routes.stouts.rate );
+
 app.get( '/stout/:slug', routes.stouts.show );
 
 app.get( '/api/stouts', routes.stouts.api.index );

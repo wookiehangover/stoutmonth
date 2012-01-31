@@ -1,4 +1,6 @@
-var nm = require('modules/namespace');
+var
+  nm      = require('modules/namespace'),
+  cornify = require('modules/cornify'); // shh!
 
 var User = Backbone.Model.extend({
 
@@ -26,7 +28,7 @@ var DrinkView = Backbone.View.extend({
   setCount: function( count ){
     var $this = this.$el.find('.counter');
     $this.text( count );
-    $this.attr('class', 'counter d_'+ ( count > 9 ? 10 : count ) );
+    this.$el.attr('class', 'd_'+ ( count > 9 ? 10 : count ) );
   }
 
 });
@@ -61,6 +63,8 @@ var Drinks = Backbone.Collection.extend({
     var beer = this.findByBeer( slug );
 
     if( beer ){
+
+      if( beer.get('count') >= 13 ) cornify();
 
       return beer.save({
         count: beer.get('count') + 1

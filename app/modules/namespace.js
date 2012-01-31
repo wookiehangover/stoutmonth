@@ -21,7 +21,8 @@ this.Stout = this.Stout || {
 
 Backbone.Model.prototype.idAttribute = "_id";
 
-// use localstorage for 
+
+// use localstorage for anonymous users
 if( ( this.Stout.local = ! this.ea_loggedIn ) ){
   require('modules/localstorage');
 } else {
