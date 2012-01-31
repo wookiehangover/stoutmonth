@@ -5,29 +5,28 @@
 config.init({
 
   lint: {
-    files: ["build/config.js", "app/**/*.js"]
+    files: ["build/config.js", "app/**/*.js", "lib/**/*.js", "routes/*.js", "app.js"]
   },
 
   concat: {
 
     // The core library files
-    "dist/debug/js/libs.js": [
-      "assets/js/libs/jquery.js",
+    "assets/js/src/libs.js": [
       "assets/js/libs/underscore.js",
-      "assets/js/libs/backbone.js",
-      "assets/js/libs/handlebars.1.0.0.beta.2.js"
+      "assets/js/libs/backbone.js"
+      //"assets/js/libs/handlebars.1.0.0.beta.2.js"
     ],
 
     // Application files
-    "dist/debug/js/app.js": ["app/namespace.js", "app/modules/**/*.js", "app/index.js"],
+    //"dist/debug/js/app.js": ["app/namespace.js", "app/modules/**/*.js", "app/index.js"],
 
     // Your CSS
-    "dist/debug/css/style.css": ["assets/css/**/*.css"]
+    "assets/css/src/style.css": ["assets/css/base.css", "assets/css/skeleton.css", "assets/layout.css"]
   },
 
   stitch: {
-    "dist/debug/js/modules.js": {
-      paths: [ "app/modules" ]
+    "assets/js/src/app.js": {
+      paths: [ "app" ]
     }
   },
 
@@ -40,19 +39,18 @@ config.init({
   },
 
   min: {
-    "dist/release/js/libs.js": ["dist/debug/js/libs.js"],
-    "dist/release/js/app.js": ["dist/debug/js/app.js"],
-    "dist/release/js/modules.js": ["dist/debug/js/modules.js"],
-    "dist/release/js/templates.js": ["dist/debug/js/templates.js"]
+    "assets/js/src/libs.min.js": ["assets/js/src/libs.js"],
+    //"dist/release/js/templates.js": ["dist/debug/js/templates.js"],
+    "assets/js/src/app.min.js": ["assets/js/src/app.js"]
   },
 
   mincss: {
-    "dist/release/css/style.css": ["dist/debug/css/style.css"]
+    "assets/css/src/style.css": ["assets/css/src/style.css"]
   },
 
   watch: {
     files: ["assets/**/*", "app/**/*"],
-    tasks: "lint:files concat stitch handlebars-jst",
+    tasks: "concat stitch",
 
     min: {
       files: ["assets/**/*", "app/**/*"],
@@ -72,4 +70,4 @@ config.init({
 });
 
 // Run the following tasks...
-task.registerTask("default", "clean lint:files stitch concat handlebars-jst min mincss");
+task.registerTask("default", "clean lint:files stitch concat min mincss");
