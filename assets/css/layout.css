@@ -42,13 +42,14 @@ body { color: #616161; }
 .stout-list li { float:left; position: relative; width: 100%; }
 .stout-list header { float: left; }
 .stout-list h2 { float:left; margin: 0; width: 260px; padding: 0 0 4px; font-size: 24px; line-height: 1; }
-.stout-list button { float: left; margin: 4px 12px 0 0; }
+.stout-list .button { float: left; margin: 4px 12px 0 0; }
+.stout-list .description { float: left; clear: both; }
 .stout-list dl { float: left; clear: both; margin: 0 0 12px 0; }
 .stout-list dl dt { float: left; padding-right: 4px; }
 .stout-list dl dd { float: left; padding-right: 8px; font-weight: bold; }
 .stout-list .rating { float:left; clear: both;}
 .stout-list .details { float:right; }
-.container .counter { position: absolute; top:0; right:0; min-width: 24px; height: 20px; text-align: center; font-size: 12px; line-height: 20px; color: #fff; background: #000;
+.container .counter { position: absolute; top:0; right:0; min-width: 24px; height: 24px; font-size: 20px; font-family: "Germania One"; text-align: center; line-height: 24px; color: #000; background: #ccc;
   -webkit-border-radius: 16px; 
      -moz-border-radius: 16px; 
           border-radius: 16px; 
@@ -56,20 +57,27 @@ body { color: #616161; }
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
 }
 
-.counter.d_1  { background: #113F8C; }
+.counter.d_1  { background: #113F8C; color: #ccc; }
 .counter.d_2  { background: #01A4A4; }
 .counter.d_3  { background: #00A1CB; }
 .counter.d_4  { background: #61AE24; }
-.counter.d_6  { background: #D0D102; }
-.counter.d_7  { background: #32742C; }
-.counter.d_8  { background: #D70060; }
-.counter.d_9  { background: #E54028; }
+.counter.d_5  { background: #D0D102; }
+.counter.d_6  { background: #32742C; }
+.counter.d_7  { background: #D70060; }
+.counter.d_8  { background: #E54028; }
+.counter.d_9  { background: #F18D05; }
 .counter.d_10 { background: #F18D05; }
 
-#fb-login { width: 300px; margin: 0 auto;}
+.admin,
+#fb-login{ width: 300px; margin: 0 auto;}
+.admin .button,
 #fb-login .fb { font-size: 24px; width: 278px; text-align: center; }
 #fb-login h3 { font-size: 16px; width: 300px; text-align: center; }
 #fb-login .drink { font-size: 60px; width: 274;text-align: center; }
+
+
+.fourohfour { width: 100%; }
+
 
 /* #Page Styles
 ================================================== */
@@ -105,8 +113,10 @@ body { color: #616161; }
   /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
   @media only screen and (max-width: 479px) {
     .topbar form { display: none; }
+    .stout-list .description { display: none; }
     .stout-list dl,
     .stout-list h2 { width: 214px;}
+    .stout-list li { border-bottom: 1px solid #eaeaea; }
   }
 
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
