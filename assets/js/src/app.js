@@ -50,8 +50,6 @@
   return this.require.define;
 }).call(this)({"index": function(exports, require, module) {jQuery(function($) {
 
-
-
 });
 }, "modules/cornify": function(exports, require, module) {var cornify_count = 0,
 
@@ -321,7 +319,6 @@ Backbone.sync = Backbone.localSync;
 };
 
 Backbone.Model.prototype.idAttribute = "_id";
-
 
 // use localstorage for anonymous users
 if( ( this.Stout.local = ! this.ea_loggedIn ) ){
