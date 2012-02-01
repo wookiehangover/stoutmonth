@@ -518,6 +518,11 @@ var Drinks = Backbone.Collection.extend({
 
     var beer = this.findByBeer( slug );
 
+    if( ! confirm('Are you sure you drank that?') ){
+      return;
+    }
+
+
     if( beer ){
 
       if( beer.get('count') >= 13 ) cornify();
