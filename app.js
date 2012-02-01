@@ -31,8 +31,6 @@ if( process.env.REDISTOGO_URL ){
   client_options = [redis_options.port, redis_options.host];
 }
 
-
-
 var app = express.createServer(
   express.bodyParser(),
   express['static'](__dirname + '/assets'),
