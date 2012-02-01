@@ -13,7 +13,8 @@
   },
   "devDependencies": {},
   "engines": {
-    "node": "~0.6.0"
+    "node": ">=0.4.7 <0.7.0",
+    "npm": ">=1.0.0"
   },
   "author": "wookiehangover <sam@quickleft.com>",
   "repository": {
