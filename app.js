@@ -10,7 +10,27 @@ var
 
   everyauth    = require('everyauth'),
   models       = require('./lib/models'),
-  mongooseAuth = models.mongooseAuth;
+  mongooseAuth = models.mongooseAuth,
+
+  RedisStore  = require('connect-redis')(express);
+
+var redis_options = {},
+    client_options = [],
+    redis_url;
+
+if( process.env.REDISTOGO_URL ){
+  redis_url = require('url').parse(process.env.REDISTOGO_URL);
+
+  redis_options = {
+      host: redis_url.hostname
+    , port: redis_url.port
+    , db:   redis_url.auth.split(':')[0]
+    , pass: redis_url.auth.split(':')[1]
+  };
+
+  client_options = [redis_options.port, redis_options.host];
+}
+
 
 
 var app = express.createServer(
@@ -18,7 +38,7 @@ var app = express.createServer(
   express['static'](__dirname + '/assets'),
   express.methodOverride(),
   express.cookieParser(),
-  express.session({ secret: 'stouts are delicious'}),
+  express.session({ secret: 'stouts are delicious', store: new RedisStore( redis_options ) }),
 
   mongooseAuth.middleware()
 );
