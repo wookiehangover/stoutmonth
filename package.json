@@ -1,14 +1,23 @@
 {
-    "name": "application-name"
-  , "version": "0.0.1"
-  , "private": true
-  , "dependencies": {
-      "express": "2.5.5"
-    , "ejs": ">= 0.0.1"
-    , "mongoose": "~2.5.1"
-    , "underscore": "~1.3.1"
-    , "mongoose-auth": "~0.0.11"
-    , "everyauth": "~0.2.29"
-    , "hogan.js": ">= 1.0.5-dev"
+  "name": "stoutmonth",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "2.5.5",
+    "ejs": ">= 0.0.1",
+    "mongoose": "~2.5.1",
+    "underscore": "~1.3.1",
+    "mongoose-auth": "~0.0.11",
+    "everyauth": "~0.2.29",
+    "hogan.js": ">= 1.0.5-dev"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "~0.6.0"
+  },
+  "author": "wookiehangover <sam@quickleft.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wookiehangover/stoutmonth.git"
   }
 }
