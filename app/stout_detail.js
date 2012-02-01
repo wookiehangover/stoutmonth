@@ -6,19 +6,22 @@ rating.on( 'change', 'input', function( e ){
 
   var $this = $(e.target);
 
-  $.post( rating.attr('action'), { rating: $this.val() } )
-  .done(function( data ){
+  if( window.confirm('Are you sure you wanna rate this?') ){
 
-    rating.find('input').not( $this ).attr('disabled', true );
+    $.post( rating.attr('action'), { rating: $this.val() } )
+    .done(function( data ){
 
-    $('.rating').html('<span>'+ data.rating +'</span> '+ data.starRating );
+      rating.find('input').not( $this ).attr('disabled', true );
 
-  })
-  .fail(function( jqXHR, textStatus ){
+      $('.rating').html('<span>'+ data.rating +'</span> '+ data.starRating );
 
-    alert('Looks like you\'ve rated this one already');
+    })
+    .fail(function( jqXHR, textStatus ){
 
-  });
+      alert('Looks like you\'ve rated this one already');
+
+    });
+  }
 
 });
 
