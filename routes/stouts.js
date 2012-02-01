@@ -45,7 +45,7 @@ routes.show = function( req, res ){
           stout: doc,
           js_module: 'stout_detail',
           loggedIn: req.loggedIn,
-          can_rate: drink ? !! drink.count : false
+          drink: drink
         });
 
       });
@@ -139,24 +139,21 @@ routes.rate = function( req, res , next ){
 
     Drink.findOne({ user: req.user.get('login') }, function( err, d ){
 
+
       if( error ){
         return res.send({ error: "Not found" }, 404);
       }
 
-      if( d.rated ){
-        return res.send("You've already rated this beer", 412);
-      }
-
-      beer.raw_rating = req.body.rating;
       beer.ratings = 1;
+      beer.raw_rating = req.body.rating;
+      d.rated = true;
+      d.my_rating = req.body.rating;
 
-      beer.save(function( err, doc){
 
-        d.rated = true;
-        d.save();
-
-        res.send( doc, 202 );
-
+      beer.save(function( err, doc ){
+        d.save(function( err, dd ){
+          res.send( { rating: doc.rating, starRating: doc.starRating }, 202 );
+        });
       });
 
     });

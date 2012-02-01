@@ -2,13 +2,19 @@
 <article class="stout-detail columns sixteen">
   <header>
     <h2>{{name}}</h2>
-    <p class="rating">{{rating}}{{&starRating}}</p>
+    <p class="rating"><span>{{rating}}</span> {{&starRating}}</p>
     <span class="counter">0</span>
   </header>
 
 {{#loggedIn}}
 
-{{#can_rate}}
+{{#drink}}
+{{#rated}}
+<h3>My Rating: {{my_rating}}/5</h3>
+{{/rated}}
+
+
+{{^rated}}
 <form id="stout-rating" action="/stout/{{slug}}/rate">
   <h2>Drank it? Rate it.</h2>
   <label>1</label>
@@ -24,7 +30,8 @@
     <input type="radio" name="rating" value="5">
   </fieldset>
 </form>
-{{/can_rate}}
+{{/rated}}
+{{/drink}}
 
 {{/loggedIn}}
 

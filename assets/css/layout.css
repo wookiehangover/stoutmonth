@@ -25,6 +25,7 @@ body { color: #616161; }
 .form-row input[type=text] { width: 100%; }
 
 .rating { font-size: 24px; }
+.rating span { font-size: 24px; font-family: "Germania One"; color: #181818; }
 
 .topbar h1 { color:#616161; float: left; font-size: 32px; margin: 0 12px 0 12px; line-height: 40px; }
 .topbar h1 a { text-decoration: none; }

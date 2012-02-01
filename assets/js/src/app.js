@@ -439,12 +439,12 @@ rating.on( 'change', 'input', function( e ){
 
     rating.find('input').not( $this ).attr('disabled', true );
 
-    console.log( data.rating );
+    $('.rating').html('<span>'+ data.rating +'</span> '+ data.starRating );
 
   })
   .fail(function( jqXHR, textStatus ){
 
-    alert(textStatus);
+    alert('Looks like you\'ve rated this one already');
 
   });
 
