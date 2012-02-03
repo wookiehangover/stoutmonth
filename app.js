@@ -32,11 +32,10 @@ if( process.env.REDISTOGO_URL ){
 
 var app = express.createServer(
   express.bodyParser(),
-  express['static'](__dirname + '/assets'),
+  express.static(__dirname + '/assets'),
   express.methodOverride(),
   express.cookieParser(),
-  express.session({ secret: 'stouts are delicious', store: new RedisStore( redis_options ) }),
-
+  express.session({ secret: 'stouts are delicious', store: new RedisStore( redis_options ), maxAge: 900001 }),
   mongooseAuth.middleware()
 );
 
