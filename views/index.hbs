@@ -1,12 +1,9 @@
 <section id="fb-login">
-  {{#everyauth}}
 
-  {{^loggedIn}}
+  {{#unless everyauth.loggedIn}}
   <a href="/auth/facebook" class="button fb">Sign in with Facebook</a>
   <h3>&mdash;or&mdash;</h3>
-  {{/loggedIn}}
-
-  {{/everyauth}}
+  {{/unless}}
 
   <a href="/stouts" class="button drink">Drink Now</a>
 </section>

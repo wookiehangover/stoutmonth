@@ -12,6 +12,9 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/skeleton.css">
   <link rel="stylesheet" href="/css/layout.css">
@@ -26,6 +29,7 @@
 
   <script src="/js/libs/modernizr-2.0.6.min.js"></script>
 
+  {{#if production}}
   <script type="text/javascript">
 
     var _gaq = _gaq || [];
@@ -39,56 +43,43 @@
     })();
 
   </script>
+  {{/if}}
 </head>
 
 <body>
-  <!-- Main container -->
-  <div role="main" id="main" {{if( bodyclass.length ) { }}class="{{-bodyclass}}"{{ } }}>
+  <div role="main" id="main" {{#if bodyclass.length}}class="{{bodyclass}}"{{/if}}>
 
     <header class="topbar">
       <div class="topbar-inner">
-        {{#everyauth}}
-          <h1>
-          {{#loggedIn}}
-            <a href="/stouts">Stout Month</a>
-          {{/loggedIn}}
-          {{^loggedIn}}
-            <a href="/">Stout Month</a>
-          {{/loggedIn}}
-          </h1>
-        {{/everyauth}}
+        <h1>
+        {{#if everyauth.loggedIn}}
+          <a href="/stouts">Stout Month</a>
+        {{else}}
+          <a href="/">Stout Month</a>
+        {{/if}}
+        </h1>
 
-        {{#search}}
+        {{#if search}}
         <form class="pull-left" action="">
           <input type="text" placeholder="Search">
         </form>
-        {{/search}}
+        {{/if}}
 
         <ul class="nav secondary-nav">
-          {{#everyauth}}
-            {{#loggedIn}}
+          {{#if everyauth.loggedIn}}
             <li>
               <a href="/me">Profile</a>
             </li>
             <li>
               <a href="/logout">Logout</a>
             </li>
-            {{/loggedIn}}
-            {{^loggedIn}}
+
+            {{else}}
+
             <li>
               <a href="/auth/facebook">Login</a>
             </li>
-            {{/loggedIn}}
-          {{/everyauth}}
-
-          <!--<li class="dropdown">-->
-            <!--<a href="#" class="dropdown-toggle">Sort</a>-->
-
-            <!--<ul class="dropdown-menu">-->
-              <!--<li><a href="#">A - Z</a></li>-->
-            <!--</ul>-->
-          <!--</li>-->
-
+          {{/if}}
         </ul>
 
       </div>
@@ -103,14 +94,20 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 
+
+{{#if production}}
+  <script src="/js/src/libs.min.js"></script>
+  <script src="/js/src/app.min.js"></script>
+{{else}}
   <script src="/js/src/libs.js"></script>
   <script src="/js/src/app.js"></script>
+{{/if}}
 
   <script>
     window.ea_loggedIn = '{{everyauth.loggedIn}}';
-    {{#js_module}}
+    {{#if js_module}}
     require('{{js_module}}');
-    {{/js_module}}
+    {{/if}}
   </script>
 
 </body>

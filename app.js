@@ -5,8 +5,7 @@ var
   express      = require('express'),
   routes       = require('./routes'),
 
-  hogan        = require('hogan.js'),
-  hoganAdapter = require('./lib/hogan-express'),
+  hbs          = require('hbs'),
 
   everyauth    = require('everyauth'),
   models       = require('./lib/models'),
@@ -45,8 +44,7 @@ var app = express.createServer(
 
 app.configure(function(){
   app.set('views', __dirname + '/views');
-  app.set('view engine', 'mustache');
-  app.register('mustache', hoganAdapter.init( hogan ) );
+  app.set('view engine', 'hbs');
 });
 
 app.configure('development', function(){
@@ -56,7 +54,9 @@ app.configure('development', function(){
 
 app.configure('production', function(){
   app.use(express.errorHandler());
+  app.helpers({ production: true });
 });
+
 
 mongooseAuth.helpExpress( app );
 
