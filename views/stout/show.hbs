@@ -9,11 +9,10 @@
 {{#if drink}}
 
   {{#if drink.my_rating}}
-
   <h3>My Rating: {{drink.my_rating}}/5</h3>
+  {{/if}}
 
-  {{else}}
-
+  {{#unless drink.rated}}
   <form id="stout-rating" action="/stout/{{stout.slug}}/rate">
     <h2>Drank it? Rate it.</h2>
     <label>1</label>
@@ -29,8 +28,7 @@
       <input type="radio" name="rating" value="5">
     </fieldset>
   </form>
-
-  {{/if}}
+  {{/unless}}
 
 {{/if}}
 
@@ -67,7 +65,7 @@
 <script type="text/javascript">
   var
     disqus_shortname  = 'stoutmonth',
-    disqus_url        = 'http://stoutmonth.com/stout/{{slug}}',
+    disqus_url        = 'http://stoutmonth.com/stout/{{stout.slug}}',
     disqus_identifier = '{{stout.slug}}';
 
 

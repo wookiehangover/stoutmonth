@@ -135,7 +135,7 @@ routes.rate = function( req, res , next ){
       return res.send({ error: "Not found" }, 404);
     }
 
-    Drink.findOne({ user: req.user.get('login') }, function( err, d ){
+    Drink.findOne({ user: req.user.get('login'), beer: req.params.slug }, function( err, d ){
 
 
       if( error ){
