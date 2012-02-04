@@ -120,7 +120,6 @@ var StoutList = Backbone.View.extend({
 
 });
 
-
 jQuery(function( $ ){
 
   nm.drinks = new Drinks();
@@ -131,5 +130,7 @@ jQuery(function( $ ){
     user: nm.user,
     drinks: nm.drinks
   });
+
+  $('#stout-search').quicksearch( $('#stout-list li') );
 
 });

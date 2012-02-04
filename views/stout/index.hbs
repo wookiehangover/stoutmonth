@@ -9,6 +9,8 @@
         <dd>{{abv}}
         <dt>OG:
         <dd>{{og}}
+        <dt></dt>
+        <dd><a href="/stout/{{slug}}#disqus_thread" data-disqus-identifier="{{slug}}"></a></dd>
       </dl>
     </header>
     <p class="rating"><a href="/stout/{{slug}}">{{&starRating}}</a></p>
@@ -18,3 +20,15 @@
   </li>
   {{/stouts}}
 </ul>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'stoutmonth';
+
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>

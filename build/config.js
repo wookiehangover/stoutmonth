@@ -13,7 +13,8 @@ config.init({
     // The core library files
     "assets/js/src/libs.js": [
       "assets/js/libs/underscore.js",
-      "assets/js/libs/backbone.js"
+      "assets/js/libs/backbone.js",
+      "assets/js/libs/jquery.quicksearch.js"
       //"assets/js/libs/handlebars.1.0.0.beta.2.js"
     ],
 
@@ -70,4 +71,4 @@ config.init({
 });
 
 // Run the following tasks...
-task.registerTask("default", "clean lint:files stitch concat min mincss");
+task.registerTask("default", "clean stitch concat min");

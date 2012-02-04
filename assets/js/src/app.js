@@ -456,11 +456,16 @@ rating.on( 'change', 'input', function( e ){
 
 $('#drink-it').on('click', function( e ){
 
-  var $this = $(this);
+  var
+    $this = $(this),
+    beer = $this.data('beer');
 
   if( confirm('Are you sure you drank that?') ){
-    $.post('/api/drinks/', $this.data('beer')).done(function(){
-      $('#stout-rating').slideDown();
+    $.post('/api/drinks/', beer).done(function(){
+
+      if( ! beer.count ){
+        $('#stout-rating').slideDown();
+      }
     });
   }
 
@@ -590,7 +595,6 @@ var StoutList = Backbone.View.extend({
 
 });
 
-
 jQuery(function( $ ){
 
   nm.drinks = new Drinks();
@@ -601,6 +605,8 @@ jQuery(function( $ ){
     user: nm.user,
     drinks: nm.drinks
   });
+
+  $('#stout-search').quicksearch( $('#stout-list li') );
 
 });
 }});
