@@ -58,14 +58,13 @@ var Drinks = Backbone.Collection.extend({
     });
   },
 
-  drink: function( slug, user ){
+  drink: function( data, user ){
 
-    var beer = this.findByBeer( slug );
+    var beer = this.findByBeer( data.slug );
 
-    if( ! confirm('Are you sure you drank that?') ){
+    if( ! confirm( data.name + '\nAre you sure you drank that?') ){
       return;
     }
-
 
     if( beer ){
 
@@ -113,9 +112,7 @@ var StoutList = Backbone.View.extend({
   onDrink: function( e ){
     e.preventDefault();
 
-    var $this = $(e.currentTarget);
-
-    this.drinks.drink( $this.data('slug'), this.user.get('login') );
+    this.drinks.drink( $(e.currentTarget).data(), this.user.get('login') );
   }
 
 });
