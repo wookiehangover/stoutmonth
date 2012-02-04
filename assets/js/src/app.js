@@ -453,6 +453,20 @@ rating.on( 'change', 'input', function( e ){
 
 });
 
+
+$('#drink-it').on('click', function( e ){
+
+  var $this = $(this);
+
+  if( confirm('Are you sure you drank that?') ){
+    $.post('/api/drinks/', $this.data('beer')).done(function(){
+      $('#stout-rating').slideDown();
+    });
+  }
+
+  return false;
+});
+
 });
 }, "stouts": function(exports, require, module) {var
   nm      = require('modules/namespace'),

@@ -43,7 +43,6 @@ routes.show = function( req, res ){
         res.render( 'stout/show', {
           stout: doc,
           js_module: 'stout_detail',
-          loggedIn: req.loggedIn,
           drink: drink
         });
 
