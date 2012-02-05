@@ -13,6 +13,10 @@ exports.stout = {
 
 exports.factory = {};
 
+exports.factory.stout = function( s ){
+  return _.defaults( ( s || {} ), exports.stout );
+};
+
 exports.factory.drink = function( d ){
 
   return _.defaults( ( d || {} ), {

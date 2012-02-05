@@ -69,7 +69,7 @@ routes.create = function( req, res ){
 };
 
 routes.edit = function( req, res ){
-  Stout.find({ slug: req.params.slug }, function( err, doc ){
+  Stout.findOne({ slug: req.params.slug }, function( err, doc ){
     if( err ) throw err;
 
     res.render( 'stout/edit', { stout: doc } );
@@ -123,7 +123,7 @@ routes.api.show = function( req, res ){
 /* ------------------------------ RPC ------------------------------ */
 
 // POST /stout/:slug/rate
-routes.rate = function( req, res , next ){
+routes.rate = function( req, res ){
 
   if( !req.user ){
     return res.send({ error: "Forbidden" }, 403);
@@ -131,25 +131,23 @@ routes.rate = function( req, res , next ){
 
   Stout.findOne({ slug: req.params.slug }, function( error, beer ){
 
-    if( error ){
-      return res.send({ error: "Not found" }, 404);
+    if( error || ! beer ){
+      return res.send({ error: "Stout not found" }, 404);
     }
 
-    Drink.findOne({ user: req.user.get('login'), beer: req.params.slug }, function( err, d ){
+    Drink.findOne({ user: req.user.get('login'), beer: req.params.slug }, function( err, drink ){
 
-
-      if( error ){
-        return res.send({ error: "Not found" }, 404);
+      if( error || ! drink ){
+        return res.send({ error: "Drink not found" }, 412);
       }
 
       beer.ratings = 1;
       beer.raw_rating = req.body.rating;
-      d.rated = true;
-      d.my_rating = req.body.rating;
-
+      drink.rated = true;
+      drink.my_rating = req.body.rating;
 
       beer.save(function( err, doc ){
-        d.save(function( err, dd ){
+        drink.save(function( err, d2 ){
           res.send( { rating: doc.rating, starRating: doc.starRating }, 202 );
         });
       });
