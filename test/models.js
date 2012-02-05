@@ -77,7 +77,7 @@ describe('Drink', function(){
   describe('count', function(){
 
     it('should have a default value of 1', function(){
-      assert.ok( this.drink.count, 1 );
+      assert.ok( this.drink.count, 0 );
     });
 
     it('should increment count when set', function( done ){
@@ -86,7 +86,7 @@ describe('Drink', function(){
       this.drink.save(function( err, drink ){
         if( err ) throw err;
 
-        assert.equal( drink.count, 2 );
+        assert.equal( drink.count, 1 );
         done();
       });
     });
@@ -97,13 +97,14 @@ describe('Drink', function(){
 
     it('should get the total number of drinks for a user', function( done ){
       var drink = new models.drink( fixtures.factory.drink({
-        beer: 'some-other-sout'
+        beer: 'some-other-sout',
+        count: 1
       }) );
 
       drink.save(function( err, drink ){
 
         models.drink.getTotal( drink.user, function(err, total){
-          assert.equal( total, 6 );
+          assert.equal( total, 2 );
           done();
         });
 
