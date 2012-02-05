@@ -21,5 +21,8 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/wookiehangover/stoutmonth.git"
+  },
+  "scripts": {
+    "test": "mocha"
   }
 }
