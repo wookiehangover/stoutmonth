@@ -27,13 +27,13 @@ routes.index = function( req, res, next ){
 
 routes.api = {};
 
-routes.api.index = function( req, res, next ){
+routes.api.index = function( req, res ){
 
   if( !req.user ){
     return res.send({ error: "Not found" }, 404);
   }
 
-  res.send( req.user );
+  res.send( req.user, 200 );
 
 };
 
