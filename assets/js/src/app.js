@@ -552,7 +552,7 @@ var Drinks = Backbone.Collection.extend({
     } else {
 
       beer = new Drink({
-        beer: slug,
+        beer: data.slug,
         user: user,
         count: 1
       });
