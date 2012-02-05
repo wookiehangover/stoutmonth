@@ -15,14 +15,8 @@ config.init({
       "assets/js/libs/underscore.js",
       "assets/js/libs/backbone.js",
       "assets/js/libs/jquery.quicksearch.js"
-      //"assets/js/libs/handlebars.1.0.0.beta.2.js"
-    ],
+    ]
 
-    // Application files
-    //"dist/debug/js/app.js": ["app/namespace.js", "app/modules/**/*.js", "app/index.js"],
-
-    // Your CSS
-    "assets/css/src/style.css": ["assets/css/base.css", "assets/css/skeleton.css", "assets/layout.css"]
   },
 
   stitch: {
@@ -31,22 +25,14 @@ config.init({
     }
   },
 
-  jst: {
-    "dist/debug/js/templates.js": ["app/templates/**/*.html"]
-  },
-
   "handlebars-jst": {
-    "dist/debug/js/templates.js": ["app/templates/**/*.hbs"]
+    "assets/js/src/templates.js": ["app/templates/**/*.hbs"]
   },
 
   min: {
-    "assets/js/src/libs.min.js": ["assets/js/src/libs.js"],
-    //"dist/release/js/templates.js": ["dist/debug/js/templates.js"],
-    "assets/js/src/app.min.js": ["assets/js/src/app.js"]
-  },
-
-  mincss: {
-    "assets/css/src/style.css": ["assets/css/src/style.css"]
+    //"assets/js/src/templates.js": ["assets/js/src/templates.js"],
+    "assets/js/src/libs.js": ["assets/js/src/libs.js"],
+    "assets/js/src/app.js": ["assets/js/src/app.js"]
   },
 
   watch: {
@@ -65,7 +51,7 @@ config.init({
   },
 
   clean: {
-    folder: "dist/"
+    folder: "assets/js/src/"
   }
 
 });
