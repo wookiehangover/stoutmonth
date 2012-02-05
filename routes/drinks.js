@@ -6,7 +6,7 @@ var
 
 routes.api = {};
 
-routes.api.index = function( req, res, next ){
+routes.api.index = function( req, res ){
 
   if( !req.user ){
     return res.send({ error: "Forbidden" }, 403);

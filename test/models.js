@@ -13,7 +13,7 @@ describe('Stout', function(){
   });
 
   after(function( done ){
-    this.stout.remove( done );
+    models.stout.remove({ "slug" : "meat-packer-stout" }, done );
   });
 
   it('should exist', function(){
