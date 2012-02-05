@@ -2,16 +2,15 @@
 
 var
   _            = require('underscore'),
-  express      = require('express'),
-  routes       = require('./routes'),
-
   hbs          = require('hbs'),
-
+  express      = require('express'),
   everyauth    = require('everyauth'),
-  models       = require('./lib/models'),
-  mongooseAuth = models.mongooseAuth,
+  RedisStore   = require('connect-redis')(express),
 
-  RedisStore  = require('connect-redis')(express);
+  routes       = require('./lib/routes'),
+  models       = require('./lib/models'),
+
+  mongooseAuth = models.mongooseAuth;
 
 var redis_options = {},
     client_options = [],

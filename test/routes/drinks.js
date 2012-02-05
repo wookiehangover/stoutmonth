@@ -4,7 +4,7 @@ var
   helper   = require('../helper'),
   request  = helper.request,
   response = helper.response,
-  routes   = require('../../routes'),
+  routes   = require('../../lib/routes'),
   models   = require('../../lib/models');
 
 
