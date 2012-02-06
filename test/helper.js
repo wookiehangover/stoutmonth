@@ -1,5 +1,7 @@
-exports.request = function(){
-  return {
+var _ = require('underscore')._;
+
+exports.request = function( o ){
+  return _.defaults( o || {}, {
 
     body: {},
 
@@ -13,7 +15,7 @@ exports.request = function(){
 
     }
 
-  };
+  });
 };
 
 exports.response = function( cb ){
