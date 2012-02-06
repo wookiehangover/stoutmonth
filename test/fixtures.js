@@ -11,6 +11,25 @@ exports.stout = {
   "raw_rating" : 4
 };
 
+exports.user = {
+  "login" : "old-dude",
+  "fb" : {
+    "id" : "foobar",
+    "accessToken" : "foobar",
+    "alias" : "samuelbreed",
+    "gender" : "male",
+    "timezone" : "-7",
+    "locale" : "en_US",
+    "verified" : true,
+    "updatedTime" : "2011-12-08T02:57:59+0000",
+    "name" : {
+      "full" : "Samuel Breed",
+      "first" : "Samuel",
+      "last" : "Breed"
+    }
+  }
+};
+
 exports.factory = {};
 
 exports.factory.stout = function( s ){
