@@ -41,7 +41,11 @@ describe('Stout', function(){
     });
 
     it('should increment ratings on save', function(){
-      assert( this.stout.ratings, 2 );
+      assert.equal( this.stout.ratings, 1 );
+    });
+
+    it('should display the correct number of stars', function(){
+      assert.equal( this.stout.starRating, '&#9733;&#9733;&#9733;&#9733;&#9734;' );
     });
 
   });

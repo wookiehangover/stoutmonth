@@ -1,4 +1,4 @@
-var _ = require('underscore');
+var _ = require('underscore')._;
 
 exports.stout = {
   "name" : "Meat Packer Stout",
