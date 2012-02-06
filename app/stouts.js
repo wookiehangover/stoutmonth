@@ -1,8 +1,8 @@
 var
-  nm      = require('modules/namespace'),
-  cornify = require('modules/cornify'); // shh!
+  nm      = require('./modules/namespace'),
+  cornify = require('./modules/cornify'); // shh!
 
-var User = Backbone.Model.extend({
+var User = exports.User = Backbone.Model.extend({
 
   initialize: function(){
     this.deferred = this.fetch();
@@ -13,7 +13,7 @@ var User = Backbone.Model.extend({
   url: '/api/user'
 });
 
-var DrinkView = Backbone.View.extend({
+var DrinkView = exports.DrinkView = Backbone.View.extend({
 
   initialize: function(){
 
@@ -33,7 +33,7 @@ var DrinkView = Backbone.View.extend({
 
 });
 
-var Drink = Backbone.Model.extend({
+var Drink = exports.Drink = Backbone.Model.extend({
 
   initialize: function(){
     this.view = new DrinkView({ model: this, el: $('#'+ this.get('beer') ) });
@@ -41,7 +41,7 @@ var Drink = Backbone.Model.extend({
 
 });
 
-var Drinks = Backbone.Collection.extend({
+var Drinks = exports.Drinks = Backbone.Collection.extend({
   url: '/api/drinks',
 
   localStorage: new Store('drinks'),
@@ -91,8 +91,7 @@ var Drinks = Backbone.Collection.extend({
 
 });
 
-
-var StoutList = Backbone.View.extend({
+var StoutList = exports.StoutList = Backbone.View.extend({
 
   initialize: function( data ){
     if( data.user ){
@@ -117,7 +116,7 @@ var StoutList = Backbone.View.extend({
 
 });
 
-jQuery(function( $ ){
+nm.init = function( $ ){
 
   nm.drinks = new Drinks();
   nm.user   = new User();
@@ -130,4 +129,6 @@ jQuery(function( $ ){
 
   $('#stout-search').quicksearch( $('#stout-list li') );
 
-});
+};
+
+jQuery( nm.init );
