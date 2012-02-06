@@ -44,7 +44,7 @@ describe('user.api.destroy', function(){
   });
 
   afterEach(function( done ){
-    models.user.remove({ login: 'old-dude'}, done);
+    models.user.remove({ login: 'old_dude'}, done);
   });
 
   it('should exist', function(){
@@ -80,7 +80,7 @@ describe('user.api.destroy', function(){
     var
       req = request({ logout: function(){} }),
       res = response(function(){
-        models.user.find({ login: 'old-dude' }, function( err, doc ){
+        models.user.find({ login: 'old_dude' }, function( err, doc ){
           assert.equal( doc.length, 0 );
           done();
         });

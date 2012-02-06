@@ -45,7 +45,7 @@ describe('Stout', function(){
     });
 
     it('should display the correct number of stars', function(){
-      assert.equal( this.stout.starRating, '&#9733;&#9733;&#9733;&#9733;&#9734;' );
+      assert.equal( this.stout.starRating, '&#9733;&#9733;&#9733;&#9733;&#9734;' ); // omg starzzz
     });
 
   });

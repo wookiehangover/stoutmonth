@@ -53,14 +53,14 @@ describe('drinks.api.create', function(){
 
   it('should create a drink', function( done ){
     var
-      req = request(),
+      req = request({
+        body: fixtures.factory.drink()
+      }),
       res = response(function( resp ){
         assert.equal( resp.user, 'old_dude' );
         assert.equal( resp.count, 0 );
         done();
       });
-
-    req.body = fixtures.factory.drink();
 
     routes.drinks.api.create(req, res );
   });

@@ -10,7 +10,7 @@ exports.request = function( o ){
     user: {
 
       get: function(){
-        return 'old-dude';
+        return 'old_dude';
       }
 
     }

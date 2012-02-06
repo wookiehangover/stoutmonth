@@ -12,7 +12,7 @@ exports.stout = {
 };
 
 exports.user = {
-  "login" : "old-dude",
+  "login" : "old_dude",
   "fb" : {
     "id" : "foobar",
     "accessToken" : "foobar",
@@ -33,14 +33,12 @@ exports.user = {
 exports.factory = {};
 
 exports.factory.stout = function( s ){
-  return _.defaults( ( s || {} ), exports.stout );
+  return _.defaults( s || {}, exports.stout );
 };
 
 exports.factory.drink = function( d ){
-
-  return _.defaults( ( d || {} ), {
+  return _.defaults( d || {}, {
     "beer" : "girl-scout-stout",
     "user" : "old_dude"
   });
-
 };

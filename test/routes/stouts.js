@@ -47,7 +47,9 @@ describe('stouts.show', function(){
   it('should return a single record', function( done ){
 
     var
-      req = request(),
+      req = request({
+        params: { slug: 'meat-packer-stout' }
+      }),
       res = response(function( path, context ){
 
         assert.equal( path, 'stout/show' );
@@ -56,8 +58,6 @@ describe('stouts.show', function(){
 
         done();
       });
-
-    req.params.slug = 'meat-packer-stout';
 
     routes.stouts.show( req, res );
   });
@@ -86,13 +86,13 @@ describe('stouts.create', function(){
 
   it('should create a new stout', function( done ){
     var
-      req = request(),
+      req = request({
+        body: { stout: fixtures.stout }
+      }),
       res = response(function( redirect_path ){
         assert.equal( redirect_path, '/stout/meat-packer-stout' );
         models.stout.remove({ name : 'Meat Packer Stout' }, done );
       });
-
-    req.body.stout = fixtures.stout;
 
     routes.stouts.create( req, res );
   });
@@ -112,14 +112,14 @@ describe('stouts.edit', function(){
 
   it('should render the edit view', function( done ){
     var
-      req = request(),
+      req = request({
+        params: { slug: 'meat-packer-stout' }
+      }),
       res = response(function( path, context ){
         assert.equal( path, 'stout/edit' );
         assert.equal( context.stout.name, 'Meat Packer Stout' );
         done();
       });
-
-    req.params.slug = 'meat-packer-stout';
 
     routes.stouts.edit( req, res );
   });
@@ -139,13 +139,13 @@ describe('stouts.udpate ', function(){
 
   it('should render the edit view', function( done ){
     var
-      req = request(),
+      req = request({
+        params: { slug: 'meat-packer-stout' }
+      }),
       res = response(function( path, context ){
         assert.equal( path, '/stout/feet-packer-stout' );
         done();
       });
-
-    req.params.slug = 'meat-packer-stout';
 
     req.body.stout = fixtures.factory.stout({
       name: 'Feet Packer Stout',
@@ -197,32 +197,30 @@ describe('stout.rate', function(){
   it('should respond with a 404 w/ an invalid stout', function( done ){
 
     var
-      req = request(),
+      req = request({
+        params: { slug: 'wuuuuuut' }
+      }),
       res = response(function( body, code ){
         assert.equal( body.error, 'Stout not found' );
         assert.equal( code, 404 );
         done();
       });
 
-    req.params.slug = 'wuuuut';
-
     routes.stouts.rate( req, res );
   });
 
   it('should respond with a 404 w/ an invalid drink', function( done ){
-
     var
-      req = request(),
+      req = request({
+        params: { slug: 'meat-packer-stout' }
+      }),
       res = response(function( body, code ){
         assert.equal( body.error, 'Drink not found' );
         assert.equal( code, 412 );
         done();
       });
 
-    req.params.slug = 'meat-packer-stout';
-
     routes.stouts.rate( req, res );
-
   });
 
   it('should allow an authenticated user rate a stout', function( done ){
