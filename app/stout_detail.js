@@ -4,11 +4,14 @@ var rating = $('#stout-rating');
 
 rating.on( 'change', 'input', function( e ){
 
-  var $this = $(e.target);
+  var
+    $this = $(e.target),
+    val   = $this.val(),
+    msg   = rating.data('name') +'\n'+ val +'/5\t'+ $this.data('stars');
 
-  if( window.confirm('Are you sure you wanna rate this?') ){
+  if( window.confirm( msg ) ){
 
-    $.post( rating.attr('action'), { rating: $this.val() } )
+    $.post( rating.attr('action'), { rating: val } )
     .done(function( data ){
 
       rating.find('input').not( $this ).attr('disabled', true );

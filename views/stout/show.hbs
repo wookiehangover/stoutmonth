@@ -13,7 +13,7 @@
   {{/if}}
 
   {{#unless drink.rated}}
-  <form id="stout-rating" action="/stout/{{stout.slug}}/rate">
+  <form id="stout-rating" action="/stout/{{stout.slug}}/rate" data-name="{{stout.name}}">
     <h2>Drank it? Rate it.</h2>
     <label>1</label>
     <label>2</label>
@@ -21,11 +21,11 @@
     <label>4</label>
     <label>5</label>
     <fieldset>
-      <input type="radio" name="rating" value="1">
-      <input type="radio" name="rating" value="2">
-      <input type="radio" name="rating" value="3">
-      <input type="radio" name="rating" value="4">
-      <input type="radio" name="rating" value="5">
+      <input type="radio" name="rating" value="1" data-stars="&#9733;&#9734;&#9734;&#9734;&#9734;" />
+      <input type="radio" name="rating" value="2" data-stars="&#9733;&#9733;&#9734;&#9734;&#9734;" />
+      <input type="radio" name="rating" value="3" data-stars="&#9733;&#9733;&#9733;&#9734;&#9734;" />
+      <input type="radio" name="rating" value="4" data-stars="&#9733;&#9733;&#9733;&#9733;&#9734;" />
+      <input type="radio" name="rating" value="5" data-stars="&#9733;&#9733;&#9733;&#9733;&#9733;" />
     </fieldset>
   </form>
   {{/unless}}
