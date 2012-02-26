@@ -14,6 +14,7 @@ config.init({
     "assets/js/src/libs.js": [
       "assets/js/libs/underscore.js",
       "assets/js/libs/backbone.js",
+      "assets/js/libs/handlebars.1.0.0.beta.2.js",
       "assets/js/libs/jquery.quicksearch.js"
     ]
 
@@ -37,7 +38,7 @@ config.init({
 
   watch: {
     files: ["assets/**/*", "app/**/*"],
-    tasks: "concat stitch",
+    tasks: "concat stitch handlebars-jst",
 
     min: {
       files: ["assets/**/*", "app/**/*"],
@@ -57,4 +58,4 @@ config.init({
 });
 
 // Run the following tasks...
-task.registerTask("default", "clean stitch concat min");
+task.registerTask("default", "clean stitch handlebars-jst concat min");

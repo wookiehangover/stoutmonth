@@ -133,6 +133,7 @@ body { color: #616161; }
 
 .fourohfour { width: 100%; }
 
+#leaderboard li { height: 330px; overflow: hidden; border: 1px solid #333; }
 
 /* #Page Styles
 ================================================== */

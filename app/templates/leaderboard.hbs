@@ -1,0 +1,12 @@
+{{#each leaders}}
+<li class="three columns">
+  <h2>{{profile.fb.name.full}}{{profile.github.name}}</h2>
+  <h1>{{count}}</h1>
+  {{#if profile.fb.id}}
+  <img src="https://graph.facebook.com/{{profile.fb.id}}/picture?type=large" />
+  {{/if}}
+  {{#if profile.github.id}}
+  <img src="http://www.gravatar.com/avatar/{{profile.github.gravatarId}}?s=200" />
+  {{/if}}
+</li>
+{{/each}}

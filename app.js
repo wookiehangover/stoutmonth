@@ -1,5 +1,3 @@
-/*global _: true */
-
 var
   _            = require('underscore'),
   hbs          = require('hbs'),
@@ -64,15 +62,22 @@ app.get( '/', routes.index );
 
 app.get( '/admin', express.basicAuth( 'admin', 'ch@nge,me' ), routes.admin );
 
+app.get('/leaderboard', routes.leaderboard );
+
 // User
 
 app.get('/logout', routes.logout );
 
 app.get( '/me', routes.user.index );
 
-app.get( '/api/user', routes.user.api.index );
+app.get( '/api/user', routes.user.api.show );
 
 app.put( '/api/user', routes.user.api.update );
+
+//app.get( '/api/users', routes.user.api.index );
+
+app.get( '/api/user/:id', routes.user.api.show );
+
 
 // Drinks
 
@@ -83,6 +88,8 @@ app.post('/api/drinks', routes.drinks.api.create );
 app.put( '/api/drinks/:id', routes.drinks.api.update );
 
 app.get( '/api/drinks/total', routes.drinks.api.total );
+
+app.get( '/api/drinks/leaderboard', routes.drinks.api.leaderboard );
 
 // Stouts
 
