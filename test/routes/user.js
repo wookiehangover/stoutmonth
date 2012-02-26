@@ -14,7 +14,42 @@ var
 // TODO
 //describe('user.index')
 
+
 describe('user.api.index', function(){
+
+  it('should respond with a 403 to an unauthenticated user', function( done ){
+
+    var req = request({
+      user: false
+    }),
+
+    res = response(function( body, code ){
+      assert.equal( body.error, 'Forbidden' );
+      assert.equal( code, 403 );
+      done();
+    });
+
+    routes.user.api.index( req, res );
+
+  });
+
+  it('should respond with stuff', function( done ){
+
+    var req = request(),
+
+    res = response(function( body, code ){
+      assert.ok( body );
+      assert.equal( code, 200 );
+      done();
+    });
+
+    routes.user.api.index( req, res );
+
+  });
+
+});
+
+describe('user.api.show', function(){
 
   it('should respond with the req.user helper', function( done ){
     var
@@ -27,8 +62,23 @@ describe('user.api.index', function(){
         done();
       });
 
+    routes.user.api.show( req, res );
+  });
 
-    routes.user.api.index( req, res );
+  it('should return a valid user by ID', function( done ){
+    var
+      req = request({
+        params: {
+          id: '4f28bfa1371e5d0100000001'
+        }
+      }),
+      res = response(function( body, code ){
+        assert.equal( body._id, '4f28bfa1371e5d0100000001' );
+        assert.equal( body.fb.name.full, 'Samuel Breed' );
+        done();
+      });
+
+      routes.user.api.show( req, res );
   });
 
 });
