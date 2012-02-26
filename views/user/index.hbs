@@ -1,5 +1,11 @@
 <section class="sixteen columns">
 
+  {{#if user.fb.id}}
+  <img src="https://graph.facebook.com/{{user.fb.id}}/picture?type=large" />
+  {{/if}}
+  {{#if user.github.id}}
+  <img src="http://www.gravatar.com/avatar/{{user.github.gravatarId}}?s=300" />
+  {{/if}}
   <h2>{{user.fb.name.full}}{{user.github.name}}</h2>
   <h4>has drank</h4>
   <h1>{{total}} Stouts</h1>
