@@ -47,3 +47,4 @@ vendor/
 .bundle
 *.db
 node_modules
+dump/
