@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "express": "2.5.5",
+    "hiredis": "~0.1.14",
     "connect-redis": "~1.2.0",
     "ejs": ">= 0.0.1",
     "mongoose": "~2.5.1",
@@ -12,7 +13,10 @@
     "everyauth": "~0.2.29",
     "hbs": ">= 1.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "*",
+    "sinon": "*"
+  },
   "engines": {
     "node": ">=0.4.7 <0.7.0",
     "npm": ">=1.0.0"
