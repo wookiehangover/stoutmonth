@@ -5,7 +5,6 @@ var
 describe('stouts', function(){
 
   it('should exist', function(){
-    console.log(stouts);
     assert.ok( stouts );
   });
 

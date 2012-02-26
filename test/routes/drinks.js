@@ -127,3 +127,20 @@ describe('drinks.api.total', function(){
 
 });
 
+
+describe('drinks.api.leaderboard', function(){
+
+  it('should return stuff', function(done){
+    var req = request(),
+
+    res = response(function( body, code ){
+      assert.ok( body );
+      assert.equal( code, 200 );
+      done();
+    });
+
+    routes.drinks.api.leaderboard( req, res );
+  });
+
+});
+
